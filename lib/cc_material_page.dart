@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 
 class CurrencyConverterMaterialPage extends StatelessWidget {
@@ -5,13 +7,21 @@ class CurrencyConverterMaterialPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    final border = OutlineInputBorder(
+      borderSide: const BorderSide(
+        width: 2.0,
+        style: BorderStyle.solid,
+      ),
+      borderRadius: BorderRadius.circular(10),
+    );
+
+    return Scaffold(
       backgroundColor: Colors.blueGrey,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
+            const Text(
               "0",
               style: TextStyle(
                 fontWeight: FontWeight.bold,
@@ -20,25 +30,21 @@ class CurrencyConverterMaterialPage extends StatelessWidget {
               ),
             ),
             TextField(
-              style: TextStyle(color: Colors.black),
+              style: const TextStyle(color: Colors.black),
               decoration: InputDecoration(
                 hintText: "Please enter the amount in USD",
-                hintStyle: TextStyle(
+                hintStyle: const TextStyle(
                   color: Colors.black45,
                 ),
-                prefixIcon: Icon(Icons.monetization_on_outlined),
+                prefixIcon: const Icon(Icons.monetization_on_outlined),
                 prefixIconColor: Colors.black,
                 filled: true,
                 fillColor: Colors.white,
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                    width: 2.0,
-                    style: BorderStyle.solid,
-                  ),
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(40),
-                  ),
-                ),
+                focusedBorder: border,
+                enabledBorder: border,
+              ),
+              keyboardType: const TextInputType.numberWithOptions(
+                decimal: true,
               ),
             ),
           ],
