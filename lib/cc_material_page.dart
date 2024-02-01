@@ -19,12 +19,17 @@ class CurrencyConverterMaterialPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text(
-              "0",
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 45,
-                color: Colors.white,
+            Container(
+              padding: const EdgeInsets.all(10),
+              margin: const EdgeInsets.all(10),
+              color: Colors.black,
+              child: const Text(
+                "0",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 55,
+                  color: Colors.white,
+                ),
               ),
             ),
             // Padding
