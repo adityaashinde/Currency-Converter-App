@@ -1,11 +1,18 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+
+// 1. Create a variable that stores the converted currency value
+// 2. Create a function that multiplies the value given by the textfield
+// 3. Store the value in the variable that we created
+// 4. Display the variable
 
 class CurrencyConverterMaterialPage extends StatelessWidget {
   const CurrencyConverterMaterialPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    double result = 0;
+    final TextEditingController textEditingController = TextEditingController();
+
     final border = OutlineInputBorder(
       borderSide: const BorderSide(
         width: 2.0,
@@ -15,14 +22,19 @@ class CurrencyConverterMaterialPage extends StatelessWidget {
     );
 
     return Scaffold(
-      backgroundColor: Colors.blueGrey,
+      backgroundColor: Colors.blueGrey.shade50,
+      appBar: AppBar(
+        backgroundColor: Colors.blueGrey.shade50,
+        title: const Text("Currency Converter App"),
+        centerTitle: true,
+      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text(
-              "0",
-              style: TextStyle(
+            Text(
+              result.toString(),
+              style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 55,
                 color: Colors.white,
@@ -33,6 +45,7 @@ class CurrencyConverterMaterialPage extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: TextField(
+                controller: textEditingController,
                 style: const TextStyle(color: Colors.black),
                 decoration: InputDecoration(
                   hintText: "Please enter the amount in USD",
@@ -54,18 +67,16 @@ class CurrencyConverterMaterialPage extends StatelessWidget {
             // Button
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: TextButton(
+              child: ElevatedButton(
                 onPressed: () {
-                  // debug, release, profile
-                  if (kDebugMode) {
-                    print("Button clicked");
-                  }
+                  result = double.parse(textEditingController.text) * 81;
                 },
-                style: const ButtonStyle(
-                  backgroundColor: MaterialStatePropertyAll(Colors.black),
-                  foregroundColor: MaterialStatePropertyAll(Colors.white),
-                  minimumSize: MaterialStatePropertyAll(
-                    Size(double.infinity, 50),
+                style: TextButton.styleFrom(
+                  backgroundColor: Colors.black,
+                  foregroundColor: Colors.white,
+                  minimumSize: const Size(double.infinity, 50),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(5),
                   ),
                 ),
                 child: const Text("Convert"),
