@@ -41,19 +41,20 @@ class _CurrencyConverterMaterialPageState
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
-              "INR💶 $result",
+              "INR💶 \n$result",
               style: const TextStyle(
                 fontWeight: FontWeight.bold,
-                fontSize: 55,
+                fontSize: 50,
                 color: Colors.white,
               ),
             ),
             // Padding
             // container
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(12.0),
               child: TextField(
                 controller: textEditingController,
                 style: const TextStyle(color: Colors.black),
@@ -76,14 +77,14 @@ class _CurrencyConverterMaterialPageState
             ),
             // Button
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(10.0),
               child: ElevatedButton(
                 onPressed: () {
                   setState(() {});
                   result = double.parse(textEditingController.text) * 81;
                 },
                 style: TextButton.styleFrom(
-                  backgroundColor: Colors.black,
+                  backgroundColor: Colors.black87,
                   foregroundColor: Colors.white,
                   minimumSize: const Size(double.infinity, 50),
                   shape: RoundedRectangleBorder(
