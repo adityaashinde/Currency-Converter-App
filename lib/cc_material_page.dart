@@ -5,14 +5,21 @@ import 'package:flutter/material.dart';
 // 3. Store the value in the variable that we created
 // 4. Display the variable
 
-class CurrencyConverterMaterialPage extends StatelessWidget {
+class CurrencyConverterMaterialPage extends StatefulWidget {
   const CurrencyConverterMaterialPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    double result = 0;
-    final TextEditingController textEditingController = TextEditingController();
+  State<CurrencyConverterMaterialPage> createState() =>
+      _CurrencyConverterMaterialPageState();
+}
 
+class _CurrencyConverterMaterialPageState
+    extends State<CurrencyConverterMaterialPage> {
+  double result = 0;
+  final TextEditingController textEditingController = TextEditingController();
+
+  @override
+  Widget build(BuildContext context) {
     final border = OutlineInputBorder(
       borderSide: const BorderSide(
         width: 2.0,
@@ -36,7 +43,7 @@ class CurrencyConverterMaterialPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              result.toString(),
+              "INR💶 $result",
               style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 55,
@@ -72,6 +79,7 @@ class CurrencyConverterMaterialPage extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: ElevatedButton(
                 onPressed: () {
+                  setState(() {});
                   result = double.parse(textEditingController.text) * 81;
                 },
                 style: TextButton.styleFrom(
